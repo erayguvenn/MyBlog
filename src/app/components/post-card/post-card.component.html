@@ -1,0 +1,17 @@
+<div *ngFor="let item of postList" class="my-3">
+  <div class="card post-card ">
+    <div class="py-2 px-3" style="font-weight: bold">{{item.created | date:'dd.MM.yyyy HH:mm'}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{item.title }}</h5>
+      <p class="card-text">{{item.description}}</p>
+      <div class="d-flex">
+        <a href="/post/{{item.id}}" class="post-button btn btn-primary">Read Full Post</a>
+        <img src="https://github.com/mdo.png" alt="mdo" width="36" height="36" class="rounded-circle">
+        <div class="px-2 user-name">{{item.author.name + ' ' + item.author.surname}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

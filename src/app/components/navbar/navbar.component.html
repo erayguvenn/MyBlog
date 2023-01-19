@@ -1,0 +1,33 @@
+<div class="p-3 p-3 text-bg-dark">
+  <div class="container d-flex flex-wrap justify-content-center">
+    <div class="me-5" style="display: flex;align-items: center">
+      <a style="color: white; font-size:x-large " href="#" class="nav-link  px-2 active" aria-current="page">Home</a>
+    </div>
+    <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+      <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+    </form>
+
+    <div *ngIf="!isAuthenticated" class="text-end">
+      <button (click)="loginButton()" type="button" class="btn btn-light text-dark px-4 me-2">Login</button>
+   <!--   <button (click)="loginButton()" type="button" class="btn btn-light text-dark px-4 me-2">Sign-up</button>-->
+    </div>
+    <div class="d-flex" *ngIf="isAuthenticated">
+      <div (click)="write()" class="me-3" style="display: flex;justify-content: center;align-items: center;cursor:pointer" ><i class="me-1 far fa-edit"></i>Write</div>
+      <div style="display: flex;align-items: center;justify-content: center" ><i class="bildirim fas fa-bell"></i></div>
+      <div  class="mx-3  dropdown text-end">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="https://github.com/mdo.png" alt="mdo" width="36" height="36" class="rounded-circle">
+        </a>
+
+        <ul class="dropdown-menu text-small" style="">
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a (click)="logout()" style="cursor: pointer" class="dropdown-item">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
