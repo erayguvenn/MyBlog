@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import {SearchService} from "../../services/search.service";
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +10,18 @@ import {AuthService} from "../../services/auth.service";
 })
 export class NavbarComponent {
 
+  @Output() newItemEvent = new EventEmitter<string>();
   isAuthenticated:boolean=false;
+  search: any
+  result:any
   constructor(private router: Router,
-              private authService:AuthService) {}
+              private authService:AuthService,
+              private searchService:SearchService) {}
 
   ngOnInit(): void {
 
   this.isAuthenticated = this.authService.isAuthenticated();
+
   }
   loginButton() {
     this.router.navigate(['/login']);
@@ -29,4 +35,13 @@ export class NavbarComponent {
   write() {
     this.router.navigate(['/write']);
   }
+  getSearchValue() {
+    this.searchService.getSearchValue(this.search).subscribe((data:any)=>{
+      console.log(data)
+      this.result = data
+      this.newItemEvent.emit(this.result);
+
+    })
+  }
+
 }

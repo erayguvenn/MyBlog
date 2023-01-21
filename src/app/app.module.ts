@@ -14,6 +14,8 @@ import { PostCardComponent } from './components/post-card/post-card.component';
 import {QuillModule} from "ngx-quill";
 import { PostWriteComponent } from './pages/post-write/post-write.component';
 import { PostReadComponent } from './pages/post-read/post-read.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { PostReadComponent } from './pages/post-read/post-read.component';
     PostCardComponent,
     PostWriteComponent,
     PostReadComponent,
+    EditProfileComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

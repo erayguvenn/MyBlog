@@ -1,12 +1,17 @@
 <div style="overflow: hidden">
-  <app-navbar></app-navbar>
+  <app-navbar (newItemEvent)="addItem($event)"></app-navbar>
   <div class="home-header">
 
   </div>
   <div class="row" >
     <div class="col-md-8 p-5 home-content">
       <!--<app-home-content></app-home-content>-->
-      <app-post-card></app-post-card>
+      <div *ngIf="seachData">
+        <app-post-card [searchValue]="seachData"></app-post-card>
+      </div>
+      <div *ngIf="!seachData">
+        <app-post-card></app-post-card>
+      </div>
     </div>
     <div class="col-md-4 p-5 position-sticky">
       <app-right-menu ></app-right-menu>

@@ -15,7 +15,8 @@ export class BlogService {
   }
   getIndexPosts(start:number,limit:number) {
     const url = "http://3.127.53.229:60001"
-    return this.http.get(url+"/blog/"+start+"/"+limit)
+    const params = "?start="+start+"&limit="+limit
+    return this.http.get(url+"/blog/"+params)
   }
   getPost(id:any) {
     const url = "http://3.127.53.229:60001"
@@ -33,5 +34,10 @@ export class BlogService {
       this.url + "/blog",
       {title, content,description, category},{ headers: headers }
     )
+  }
+
+  getUserPost(userId:any) {
+    const url = "http://3.127.53.229:60001"
+    return this.http.get(url+"/blog/author/"+userId)
   }
 }

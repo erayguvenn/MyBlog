@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {UserModel} from "../../models/UserModel";
 import {BlogService} from "../../services/blog.service";
 import {Router} from "@angular/router";
@@ -17,6 +17,8 @@ export class PostCardComponent {
   limit:number = 10
   postList:any[] = []
   isEmpthy:boolean = false
+
+  @Input() searchValue: any;
 
   constructor(private userModel: UserModel,
               private blogService:BlogService,
@@ -72,5 +74,8 @@ export class PostCardComponent {
   }
 
 
+  getUserProfile(id:number) {
+    this.router.navigate(['/profile/' + id])
+  }
 }
 
