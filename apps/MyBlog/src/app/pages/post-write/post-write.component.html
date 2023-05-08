@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<div class="container" style="width: 80%">
+  <div class="m-3">
+    <label class="mb-1">Lütfen başlık giriniz.</label>
+    <div class="input-group" style="width: 98%">
+      <input
+        [(ngModel)]="title"
+        type="text"
+        class="form-control"
+        aria-label="Dollar amount (with dot and two decimal places)"
+      />
+    </div>
+  </div>
+  <div class="m-3">
+    <label class="mb-1">Açıklama giriniz.</label>
+    <div class="input-group" style="width: 98%">
+      <textarea
+        [(ngModel)]="description"
+        type="text"
+        class="form-control"
+        aria-label="Dollar amount (with dot and two decimal places)"
+      ></textarea>
+    </div>
+  </div>
+  <label class="mb-1 ms-3"
+    >Lütfen içeriğinizi yayınlamak istediğiniz tasarıma uygun giriniz.</label
+  >
+  <div class="m-3">
+    <quill-editor style="width: auto" [(ngModel)]="content"></quill-editor>
+  </div>
+  <button
+    style="float: right; margin-right: 3%"
+    (click)="saveValue(title, content, description)"
+    type="button"
+    class="btn btn-success px-4"
+  >
+    Save
+  </button>
+</div>

@@ -5,22 +5,21 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   providedIn: 'root'
 })
 export class BlogService {
-  private url: any
+  url:string = "http://3.127.53.229:60003"
+
+
 
   constructor(private http:HttpClient) { }
 
   getAllPosts() {
-    const url = "http://3.127.53.229:60001"
-    return this.http.get(url+"/blog")
+    return this.http.get(this.url+"/blog")
   }
   getIndexPosts(start:number,limit:number) {
-    const url = "http://3.127.53.229:60001"
     const params = "?start="+start+"&limit="+limit
-    return this.http.get(url+"/blog/"+params)
+    return this.http.get(this.url+"/blog/"+params)
   }
   getPost(id:any) {
-    const url = "http://3.127.53.229:60001"
-    return this.http.get(url+"/blog/"+id)
+    return this.http.get(this.url+"/blog/"+id)
   }
 
   setPost(title:string,content:string,description:string,category:any) {
@@ -29,7 +28,6 @@ export class BlogService {
       'Authorization': token||""
     });
 
-    this.url = "http://3.127.53.229:60001"
     return this.http.post(
       this.url + "/blog",
       {title, content,description, category},{ headers: headers }
@@ -37,7 +35,6 @@ export class BlogService {
   }
 
   getUserPost(userId:any) {
-    const url = "http://3.127.53.229:60001"
-    return this.http.get(url+"/blog/author/"+userId)
+    return this.http.get(this.url+"/blog/author/"+userId)
   }
 }

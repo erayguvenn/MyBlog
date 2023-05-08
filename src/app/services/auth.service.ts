@@ -8,7 +8,7 @@ import {UserModel} from "../models/UserModel";
 })
 export class AuthService {
 
-  url:string = "";
+  url:string = "http://3.127.53.229:60003"
   _isAuthenticated: boolean=false;
   constructor(private http: HttpClient,
               private userService: UserService,
@@ -17,7 +17,6 @@ export class AuthService {
   }
 
   login(email:string,password:string) {
-    this.url="http://3.127.53.229:60001"
     return this.http.post(
       this.url+"/auth/login",
       { email, password},
@@ -32,7 +31,6 @@ export class AuthService {
     });
   }
   signUp(name:string,surname:string,email:string,password:string) {
-    this.url="http://3.127.53.229:60001"
     return this.http.post(
       this.url+"/auth/register",
       {name,surname, email, password}

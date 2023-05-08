@@ -1,0 +1,85 @@
+{
+  "name": "MyBlog",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {},
+  "sourceRoot": "apps/MyBlog/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/MyBlog",
+        "index": "apps/MyBlog/src/index.html",
+        "main": "apps/MyBlog/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/MyBlog/tsconfig.app.json",
+        "assets": ["apps/MyBlog/src/favicon.ico", "apps/MyBlog/src/assets"],
+        "styles": [
+          "node_modules/@fortawesome/fontawesome-free/css/all.css",
+          "./node_modules/bootstrap/dist/css/bootstrap.css",
+          "apps/MyBlog/src/styles.css"
+        ],
+        "scripts": [
+          "./node_modules/jquery/dist/jquery.min.js",
+          "./node_modules/popper.js/dist/umd/popper.min.js",
+          "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "MyBlog:build:production"
+        },
+        "development": {
+          "browserTarget": "MyBlog:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "MyBlog:build"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/MyBlog/tsconfig.spec.json",
+        "assets": ["apps/MyBlog/src/favicon.ico", "apps/MyBlog/src/assets"],
+        "styles": ["apps/MyBlog/src/styles.css"],
+        "scripts": []
+      }
+    }
+  }
+}

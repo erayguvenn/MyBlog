@@ -6,11 +6,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class SearchService {
 
+  url:string = "http://3.127.53.229:60003"
+
   constructor(private http:HttpClient) { }
 
   getSearchValue(search:string) {
-    const url = "http://3.127.53.229:60001"
-    return this.http.get(url+"/blog/search?search="+search+"&start=0&limit=10")
+    return this.http.get(this.url+"/blog/search?search="+search+"&start=0&limit=10")
   }
 
 }
